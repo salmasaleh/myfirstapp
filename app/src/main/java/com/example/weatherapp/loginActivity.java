@@ -57,13 +57,13 @@ register.setOnClickListener(this);
 private void userLogin(){
     String email=logemail.getText().toString().trim();
      String pass=logpassword.getText().toString().trim();
-    Authinticatelog.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+    Authinticatelog.signInWithEmailAndPassword(email,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
         @Override
         public void onComplete(@NonNull Task<AuthResult> task) {
 if(task.isSuccessful()) {
-    finish();
-    startActivity( new Intent(loginActivity.this, ListActivity.class));
 
+    startActivity( new Intent(loginActivity.this, ListActivity.class));
+    finish();
 }
 else{
     Toast.makeText(loginActivity.this, "Login failed.",

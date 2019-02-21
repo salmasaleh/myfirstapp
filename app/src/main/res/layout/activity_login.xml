@@ -87,11 +87,11 @@
 
     <TextView
         android:id="@+id/commnt"
-      android:lastBaselineToBottomHeight="1.2dp"
         android:layout_width="338dp"
         android:layout_height="36dp"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="420dp"
         android:background="@color/common_google_signin_btn_text_dark_pressed"
+        android:lastBaselineToBottomHeight="1.2dp"
         android:text="Not Registered yet! Register Below"
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_focused"

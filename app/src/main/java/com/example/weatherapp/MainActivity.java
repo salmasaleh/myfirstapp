@@ -56,7 +56,7 @@ userinfo userinfo=new userinfo(ml);
     }
     public void onClick(View v){
         if (v == logbtn)
-            startActivity(new Intent(this, loginActivity.class));
+            startActivity(new Intent(MainActivity.this, loginActivity.class));
         if (v == registr) {
             register();
             saveuserinfo();
@@ -65,7 +65,7 @@ userinfo userinfo=new userinfo(ml);
     private void register() {
         String mail=email.getText().toString().trim();
         String pass=password.getText().toString().trim();
-        Authinticate.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        Authinticate.createUserWithEmailAndPassword(mail,pass).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
@@ -74,13 +74,13 @@ userinfo userinfo=new userinfo(ml);
 
                     Toast.makeText(MainActivity.this, "Authentication successful",
                             Toast.LENGTH_SHORT).show();
-                    finish();
+
               }
 
                 else{
                     Toast.makeText(MainActivity.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();
-
+                    finish();
 
 
                 }
