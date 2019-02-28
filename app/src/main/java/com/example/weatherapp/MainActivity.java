@@ -78,10 +78,12 @@ userinfo userinfo=new userinfo(ml);
               }
 
                 else{
-                    Toast.makeText(MainActivity.this, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show();
-                    finish();
+                 if(Authinticate.getCurrentUser().equals(null)) {
 
+                     Toast.makeText(MainActivity.this, "Authentication failed.",
+                             Toast.LENGTH_SHORT).show();
+                     finish();
+                 }
 
                 }
 

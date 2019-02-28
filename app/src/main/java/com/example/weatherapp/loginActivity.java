@@ -36,12 +36,11 @@ public class loginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         Authinticatelog=FirebaseAuth.getInstance();
-        if( Authinticatelog.getCurrentUser()!=null) {
-            finish();
-            startActivity( new Intent(loginActivity.this, ListActivity.class));
+       // if( Authinticatelog.getCurrentUser()!=null) {
+           // startActivity( new Intent(loginActivity.this, ListActivity.class));
             //listactivity
 
-        }
+       // }
 
         register =(Button)findViewById(R.id.registerbtn);
         commnt=(TextView)findViewById(R.id.commnt);
@@ -63,13 +62,17 @@ private void userLogin(){
 if(task.isSuccessful()) {
 
     startActivity( new Intent(loginActivity.this, ListActivity.class));
-    finish();
-}
-else{
-    Toast.makeText(loginActivity.this, "Login failed.",
+    Toast.makeText(loginActivity.this, "Login successful",
             Toast.LENGTH_SHORT).show();
 
+}
+else{
 
+   if(Authinticatelog.getCurrentUser().equals(null)) {
+       Toast.makeText(loginActivity.this, "Login failed.",
+               Toast.LENGTH_SHORT).show();
+       finish();
+   }
 }
 
 
