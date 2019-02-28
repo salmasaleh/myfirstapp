@@ -37,11 +37,11 @@ public class ListActivity extends AppCompatActivity {
     private int size;
     ArrayAdapter arrayAdapter;
     private LocationManager locationManager;
-    ImageView imageView;
+
     // @Override
 
     // String[] listitems=new String[]{"Android","iPhone","Windows","Bluckberry","linux"};
-int [] IMAGES ={R.drawable.esp_module};
+    ArrayList<Integer> IMAGES=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +60,10 @@ int [] IMAGES ={R.drawable.esp_module};
        locationManager=(LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         wifimanager=(WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-
+        CustomAdapter customAdapter=new CustomAdapter();
         //arrayAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
         //list.setAdapter(arrayAdapter);
-        //  list.setAdapter(customAdapter);
+          list.setAdapter(customAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListActivity.this, DeviceDetailActivity.class); //when clicking on any of list
@@ -82,7 +82,7 @@ int [] IMAGES ={R.drawable.esp_module};
                 if(scanResult.SSID.equals("boody")) {
                     arrayList.add(scanResult.SSID);
                     arrayAdapter.notifyDataSetChanged();
-
+                  IMAGES.add(R.drawable.esp_module);
                 }
             }
 
@@ -93,7 +93,7 @@ int [] IMAGES ={R.drawable.esp_module};
 
         @Override
         public int getCount() {
-            return IMAGES.length;
+            return IMAGES.size();
         }
 
         @Override
@@ -111,7 +111,7 @@ int [] IMAGES ={R.drawable.esp_module};
             view=getLayoutInflater().inflate(R.layout.customlayout,null);
             ImageView imageView=(ImageView)view.findViewById(R.id.imageView);
             TextView textView_name=(TextView)view.findViewById(R.id.textView_name);
-            imageView.setImageResource(IMAGES[position]);
+            imageView.setImageResource(IMAGES.get(position));
             textView_name.setText(arrayList.get(position));
             return view;
         }
