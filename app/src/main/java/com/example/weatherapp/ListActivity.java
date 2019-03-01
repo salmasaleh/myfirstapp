@@ -15,14 +15,10 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -60,10 +56,10 @@ public class ListActivity extends AppCompatActivity {
        locationManager=(LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
         wifimanager=(WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
-        CustomAdapter customAdapter=new CustomAdapter();
-        //arrayAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
-        //list.setAdapter(arrayAdapter);
-          list.setAdapter(customAdapter);
+        //CustomAdapter customAdapter=new CustomAdapter();
+        arrayAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
+        list.setAdapter(arrayAdapter);
+         // list.setAdapter(customAdapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListActivity.this, DeviceDetailActivity.class); //when clicking on any of list
@@ -82,40 +78,13 @@ public class ListActivity extends AppCompatActivity {
                 if(scanResult.SSID.equals("boody")) {
                     arrayList.add(scanResult.SSID);
                     arrayAdapter.notifyDataSetChanged();
-                  IMAGES.add(R.drawable.esp_module);
+                    // IMAGES.add(R.drawable.esp_module);
                 }
             }
 
         }
     };
-    class CustomAdapter extends BaseAdapter {
 
-
-        @Override
-        public int getCount() {
-            return IMAGES.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup parent) {
-            view=getLayoutInflater().inflate(R.layout.customlayout,null);
-            ImageView imageView=(ImageView)view.findViewById(R.id.imageView);
-            TextView textView_name=(TextView)view.findViewById(R.id.textView_name);
-            imageView.setImageResource(IMAGES.get(position));
-            textView_name.setText(arrayList.get(position));
-            return view;
-        }
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void scanWifi(){
@@ -130,13 +99,13 @@ if (!locationManager.isLocationEnabled()) {
 
             }
         }
-      else {
+   //   else {
            // arrayList.clear();
             registerReceiver(wifiReciever, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
             wifimanager.startScan();
             Toast.makeText(this, "Scaning Wifi", Toast.LENGTH_SHORT).show();
 
-        }
+//        }
 
     }
 
