@@ -16,8 +16,21 @@
         android:layout_marginStart="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp" />
+    <ImageView
+        android:id="@+id/imageView"
 
-   <Button
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="298dp"
+        android:layout_marginLeft="298dp"
+        android:layout_marginTop="0dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/espmodule" />
+
+    <Button
     android:id="@+id/scanbtn"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -32,6 +45,5 @@
     android:textColor="@color/common_google_signin_btn_text_dark_default"
 
     />
-
 
 </RelativeLayout>

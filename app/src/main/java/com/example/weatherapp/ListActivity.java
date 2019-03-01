@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -58,8 +57,8 @@ public class ListActivity extends AppCompatActivity {
         wifimanager=(WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         //CustomAdapter customAdapter=new CustomAdapter();
-     ImageView iv=(ImageView)findViewById(R.id.imageView);
-       iv.setImageResource(R.drawable.espmodule);
+   //  ImageView iv=(ImageView)findViewById(R.id.imageView);
+     //  iv.setImageResource(R.drawable.espmodule);
         arrayAdapter=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
 
         list.setAdapter(arrayAdapter);
