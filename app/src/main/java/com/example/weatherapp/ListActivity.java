@@ -78,7 +78,7 @@ public class ListActivity extends AppCompatActivity {
             results=wifimanager.getScanResults();
 
             for(ScanResult scanResult:results) {
-                if(scanResult.SSID.equals("boody")) {
+                if(scanResult.SSID.equals("MYESP2")) {
                     arrayList.add(scanResult.SSID);
                     arrayAdapter.notifyDataSetChanged();
 
@@ -134,13 +134,6 @@ requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},87);
         unregisterReceiver(wifiReciever);
 
     }
-
-
-
-
-
-
-
 
 
 }

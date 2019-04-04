@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    private TextView comment;
     private FirebaseAuth Authinticate;
     private Button logbtn;
-   private DatabaseReference databaseReference;
+  // private DatabaseReference databaseReference;
     FirebaseDatabase database;
 
     @Override
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         registr.setOnClickListener(this);
         logbtn.setOnClickListener(this);
          database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference();
+        //databaseReference = database.getReference();
 
 
     }
@@ -52,7 +51,7 @@ private void saveuserinfo() {
 String ml=email.getText().toString().trim();
 userinfo userinfo=new userinfo(ml);
     FirebaseUser user =Authinticate.getCurrentUser();
-    databaseReference.child(user.getUid()).setValue(userinfo);
+   // databaseReference.child(user.getUid()).setValue(userinfo);
     }
     public void onClick(View v){
         if (v == logbtn)
