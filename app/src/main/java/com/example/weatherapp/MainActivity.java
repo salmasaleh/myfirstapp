@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText email;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth Authinticate;
     private Button logbtn;
   // private DatabaseReference databaseReference;
-    FirebaseDatabase database;
+   // FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Authinticate = FirebaseAuth.getInstance();
         registr.setOnClickListener(this);
         logbtn.setOnClickListener(this);
-         database = FirebaseDatabase.getInstance();
+       //  database = FirebaseDatabase.getInstance();
         //databaseReference = database.getReference();
 
 

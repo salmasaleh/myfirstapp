@@ -86,7 +86,7 @@ else{
       if(v==loginbtn)
           userLogin();
 if(v==register){
-finish();
+    finish();
     startActivity(new Intent(this,MainActivity.class));}
 
     }

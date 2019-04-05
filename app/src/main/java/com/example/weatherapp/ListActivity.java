@@ -33,11 +33,11 @@ public class ListActivity extends AppCompatActivity {
     private int size;
     ArrayAdapter arrayAdapter;
     private LocationManager locationManager;
-
+   // String [] Templist;
     // @Override
 
-    // String[] listitems=new String[]{"Android","iPhone","Windows","Bluckberry","linux"};
-    ArrayList<Integer> IMAGES=new ArrayList<>();
+     String[] listitems=new String[]{};
+  //  ArrayList<Integer> IMAGES=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +63,16 @@ public class ListActivity extends AppCompatActivity {
 
         list.setAdapter(arrayAdapter);
          // list.setAdapter(customAdapter);
+
+
+
+
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String Templistview= list.getItemAtPosition(position).toString();
+                //listitems[position]=Templistview;
                 Intent intent = new Intent(ListActivity.this, DeviceDetailActivity.class); //when clicking on any of list
-
+                intent.putExtra("value",Templistview);
                 startActivity(intent);
             }
         });
@@ -78,12 +84,18 @@ public class ListActivity extends AppCompatActivity {
             results=wifimanager.getScanResults();
 
             for(ScanResult scanResult:results) {
-                if(scanResult.SSID.equals("MYESP2")) {
+                if(scanResult.SSID.equals("MYESP2"))   {
                     arrayList.add(scanResult.SSID);
                     arrayAdapter.notifyDataSetChanged();
 
                     // IMAGES.add(R.drawable.esp_module);
                 }
+                if(scanResult.SSID.equals("boody")) {
+                    arrayList.add(scanResult.SSID);
+                    arrayAdapter.notifyDataSetChanged();
+                }
+
+
             }
 
         }
